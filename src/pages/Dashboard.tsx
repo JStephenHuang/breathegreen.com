@@ -6,7 +6,7 @@ const SectionLink = ({ link, label }: { link: string; label: string }) => {
       className="w-full aspect-video p-[1rem] border hover:border-blue-500 transition"
       to={link}
     >
-      <h1 className="text-[24px] font-bold">{label}</h1>
+      <h1 className="text-[24px]">{label}</h1>
     </Link>
   );
 };
