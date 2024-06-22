@@ -1,7 +1,5 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 
-import { IoClose } from "react-icons/io5";
-
 const GoogleMapComponent = ({
   center,
 }: {
