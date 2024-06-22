@@ -1,4 +1,3 @@
-import React from "react";
 import { User } from "../lib/model/user";
 import { useUsers } from "../hooks/useUser";
 

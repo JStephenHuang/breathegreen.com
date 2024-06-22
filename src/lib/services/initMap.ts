@@ -18,7 +18,7 @@ export async function initMap() {
     mapId: "4504f8b37365c3d0",
   });
 
-  const marker = new AdvancedMarkerElement({
+  new AdvancedMarkerElement({
     map,
     position: { lat: 37.42, lng: -122.1 },
   });
