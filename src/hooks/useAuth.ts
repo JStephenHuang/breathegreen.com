@@ -26,8 +26,10 @@ export const useAuth = () => {
       });
 
     if (res) {
-      cookies.set("token", res.data.token);
-      window.location.reload();
+      if (res.status === 200) {
+        cookies.set("token", res.data.token);
+        window.location.reload();
+      }
     }
   };
 

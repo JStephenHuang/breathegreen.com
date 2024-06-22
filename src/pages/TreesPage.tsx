@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Tree } from "../lib/model/tree";
 import { useTrees } from "../hooks/useTree";
 
-const TreeListing = ({ tree }: { tree: Tree }) => {
+const TreeWidget = ({ tree }: { tree: Tree }) => {
   return (
     <div className="w-full flex flex-col">
       <Link to={`${tree.id}`} className="relative flex w-full aspect-square">
@@ -16,7 +16,7 @@ const TreeListing = ({ tree }: { tree: Tree }) => {
         </div>
       </Link>
 
-      <div>
+      <div className="flex flex-col gap-[0.25rem]">
         <p>
           <span className="font-bold">Owner:</span> {tree.treeOwner}
         </p>
@@ -34,16 +34,18 @@ const TreeListing = ({ tree }: { tree: Tree }) => {
 };
 
 const TreesPage = () => {
-  const { trees } = useTrees();
+  const { error, trees } = useTrees();
 
-  if (!trees) return <div>Loading</div>;
+  if (!trees)
+    return <div>{error && <p className="text-red-500">{error}</p>}Loading</div>;
+
   return (
     <div className="w-full flex flex-col">
       <h1 className="font-bold text-[32px]">Trees</h1>
       <hr />
       <div className="grid grid-cols-4 gap-[1rem] py-[1rem]">
         {trees.map((tree, key) => (
-          <TreeListing tree={tree} key={key} />
+          <TreeWidget tree={tree} key={key} />
         ))}
       </div>
     </div>

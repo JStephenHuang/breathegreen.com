@@ -12,7 +12,6 @@ export const useBackend = () => {
       Authorization: `Bearer ${cookies.get("token")}`,
     };
   }
-
   config.baseURL = `${import.meta.env.VITE_BACKEND}`;
   config.withCredentials = true;
 

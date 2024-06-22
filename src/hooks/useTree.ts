@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Tree } from "../lib/model/tree";
 import { useBackend } from "./useBackend";
 
+export const statusOptions = ["Approved", "Denied", "Under review"];
+
 export const useTrees = () => {
   const [error, setError] = useState<string | null>(null);
 
@@ -18,7 +20,9 @@ export const useTrees = () => {
       });
 
       if (res) {
-        setTrees(res.data);
+        if (res.status === 200) {
+          setTrees(res.data);
+        }
       }
     })();
   }, []);
@@ -40,10 +44,39 @@ export const useTree = (treeId: string) => {
       });
 
       if (res) {
-        setTree(res.data);
+        if (res.status === 200) {
+          setTree(res.data);
+        }
       }
     })();
   }, []);
 
-  return { error, tree };
+  const updateStatus = async (status: string | undefined) => {
+    setError("");
+
+    if (!status) {
+      setError("no value selected");
+      return;
+    }
+
+    if (status === tree?.status) {
+      setError("no value changed");
+      return;
+    }
+
+    const res = await backend
+      .put(`/trees/${treeId}`, { status: status })
+      .catch((error) => {
+        console.error(error);
+        setError(error.response.data.message);
+      });
+
+    if (res) {
+      if (res.status === 200) {
+        setTree(res.data);
+      }
+    }
+  };
+
+  return { error, tree, updateStatus };
 };

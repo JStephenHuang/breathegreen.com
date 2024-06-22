@@ -10,7 +10,7 @@ const AdminNavbar = () => {
     <nav className="h-[6rem] w-full border px-10 flex items-center justify-between">
       <div className="flex items-center gap-[1rem]">
         <Link className="hover:underline" to="">
-          Overview
+          Dashboard
         </Link>
         <Link className="hover:underline" to="trees">
           Trees
