@@ -10,6 +10,7 @@ export const useBackend = () => {
   if (cookies.get("token") !== undefined) {
     config.headers = {
       Authorization: `Bearer ${cookies.get("token")}`,
+      "Access-Control-Allow-Origin": import.meta.env.VITE_BACKEND,
     };
   }
   config.baseURL = `${import.meta.env.VITE_BACKEND}`;
