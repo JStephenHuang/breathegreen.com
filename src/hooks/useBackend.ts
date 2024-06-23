@@ -5,12 +5,11 @@ import { Cookies } from "react-cookie";
 export const useBackend = () => {
   const config: AxiosRequestConfig = {};
 
-  config.headers = {
-    "Access-Control-Allow-Origin": `${import.meta.env.VITE_BACKEND}/api`,
-  };
-
   config.baseURL = `${import.meta.env.VITE_BACKEND}/api`;
   config.withCredentials = true;
+  config.headers = {
+    "Access-Control-Allow-Origin": `${import.meta.env.VITE_BACKEND}`,
+  };
 
   const cookies = new Cookies();
 
