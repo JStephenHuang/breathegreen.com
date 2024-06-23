@@ -7,9 +7,6 @@ export const useBackend = () => {
 
   config.baseURL = `${import.meta.env.VITE_BACKEND}/api`;
   config.withCredentials = true;
-  config.headers = {
-    "Access-Control-Allow-Origin": `${import.meta.env.VITE_BACKEND}`,
-  };
 
   const cookies = new Cookies();
 
