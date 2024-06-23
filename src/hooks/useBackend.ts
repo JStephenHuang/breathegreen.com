@@ -13,7 +13,7 @@ export const useBackend = () => {
       "Access-Control-Allow-Origin": import.meta.env.VITE_BACKEND,
     };
   }
-  config.baseURL = `${import.meta.env.VITE_BACKEND}`;
+  config.baseURL = `${import.meta.env.VITE_BACKEND}/api`;
   config.withCredentials = true;
 
   return axios.create(config);
