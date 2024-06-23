@@ -27,7 +27,7 @@ export const useAuth = () => {
 
     if (res) {
       if (res.status === 200) {
-        cookies.set("token", res.data.token);
+        cookies.set("token", res.data.token, { sameSite: "none" });
         window.location.reload();
       }
     }
